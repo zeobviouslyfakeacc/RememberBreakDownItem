@@ -13,12 +13,12 @@ static class RememberBreakDownItem
 		static void Postfix(Panel_BreakDown __instance)
 		{
 			if (!__instance.IsEnabled() || InterfaceManager.ShouldImmediatelyExitOverlay()
-				|| InputManager.GetEscapePressed() || __instance.IsBreakingDown()) return;
+				|| InputManager.GetEscapePressed(__instance) || __instance.IsBreakingDown()) return;
 
 			int framesInPanel = (int)AccessTools.Field(typeof(Panel_BreakDown), "m_FramesInPanel").GetValue(__instance);
 			if (framesInPanel > 1 && Utils.IsMouseActive())
 			{
-				float movement = Utils.GetMenuMovementHorizontal(true, true);
+				float movement = Utils.GetMenuMovementHorizontal(__instance, true, true);
 				if (movement < 0)
 				{
 					__instance.OnPrevTool();
@@ -27,7 +27,7 @@ static class RememberBreakDownItem
 				{
 					__instance.OnNextTool();
 				}
-				else if (InputManager.GetRadialButton())
+				else if (InputManager.GetRadialButton(__instance))
 				{
 					__instance.OnBreakDown();
 				}
