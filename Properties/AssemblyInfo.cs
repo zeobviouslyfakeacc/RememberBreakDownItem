@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using MelonLoader;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("RememberBreakDownItem")]
@@ -13,3 +14,5 @@ using System.Runtime.InteropServices;
 [assembly: Guid("36e8bdaf-a46d-4729-b60d-f42190a089dc")]
 [assembly: AssemblyVersion("1.2.0.0")]
 [assembly: AssemblyFileVersion("1.2.0.0")]
+[assembly: MelonModInfo(typeof(RememberBreakDownItem.RememberBreakDownItemMod), "RememberBreakDownItem", "1.2", "zeobviouslyfakeacc")]
+[assembly: MelonModGame("Hinterland", "TheLongDark")]
