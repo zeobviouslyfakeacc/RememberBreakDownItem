@@ -71,6 +71,8 @@ internal static class RememberBreakDownItem {
 			} else {
 				Use(__instance, lastUsedID);
 			}
+
+			__instance.m_FramesInPanel = 0;
 			__instance.Update();
 		}
 	}
