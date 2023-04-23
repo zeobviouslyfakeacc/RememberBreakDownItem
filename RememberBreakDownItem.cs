@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Harmony;
+using UnityEngine;
+using HarmonyLib;
 using MelonLoader;
-using Il2Cpp = Il2CppSystem.Collections.Generic;
+using Il2Cpp;
 
 internal static class RememberBreakDownItem {
 
 	internal class RememberBreakDownItemMod : MelonMod {
-		public override void OnApplicationStart() {
-			UnityEngine.Debug.Log($"[{InfoAttribute.Name}] version {InfoAttribute.Version} loaded!");
-		}
-	}
+        public override void OnInitializeMelon()
+        {
+            Debug.Log($"[{Info.Name}] version {Info.Version} loaded");
+            new MelonLogger.Instance($"{Info.Name}").Msg($"Version {Info.Version} loaded");
+        }
+    }
 
 	private static readonly Dictionary<string, int> rememberedToolIDs = new Dictionary<string, int>();
 	private static int lastUsedID = -1;
@@ -83,7 +86,7 @@ internal static class RememberBreakDownItem {
 			return;
 		}
 
-		Il2Cpp.List<GearItem> tools = panel.m_Tools;
+		var tools = panel.m_Tools;
 
 		int index = -1;
 		for (int i = 0; i < tools.Count; ++i) {
